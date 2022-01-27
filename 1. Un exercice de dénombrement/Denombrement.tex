@@ -4,6 +4,11 @@
 \usepackage[T1]{fontenc}
 \usepackage[francais]{babel}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{stmaryrd}
+
 \begin{document}
 \title{Un exercice de dénombrement}
 
@@ -11,11 +16,81 @@
 
 \section{Objectif}
 
-On montre de deux manières différentes la proposition $P_n$ :\newline
+On montre de deux manières différentes la proposition $P$ :\newline
 
-$P_n$ : Soit $0<k \leq N $ deux entiers positifs. ${N \choose k} = \sum_{l=1}^{N-k+1} {N-l \choose k-1}$.
+$P$ : Soit $0<k \leq N $ deux entiers positifs. ${N \choose k} = \sum_{l=1}^{N-k+1} {N-l \choose k-1}$.
 
-\section{Première preuve}
+\section{Première preuve :  par récurrence}
 
-\section{Seconde preuve}
+Soit $ k \in \mathbb{N}^* $, on cherche à montrer que la propriété $P$ est vraie pour tout $0<k \leq N$. Pour cela, on fait une récurrence sur $N$ en commençant par $N=k$ et en montrant que si la propriété est vraie pour $N$, elle est vraie pour $N+1$.
+
+\textit{Initialisation} : l'égalité est vraie pour $N=k$, en effet,
+
+\begin{equation*}
+{k \choose k} = 1,
+\end{equation*}
+
+et,
+
+\begin{equation*}
+\sum_{l=1}^{k-k+1} {k-l \choose k-1} = {k-1 \choose k-1} = 1.
+\end{equation*}
+
+\textit{Hérédité} : on montre maintenant que, pour un $k$ donné, si la propriété est vraie au rang $N$, elle est vraie pour $N+1$. On cherche à réécrire
+
+\begin{equation*}
+\sum_{l=1}^{N+1-k+1} {N-l+1 \choose k-1},
+\end{equation*}
+
+pour cela, on fait un changement de variable $l=l-1$, on obtient
+
+\begin{equation*}
+\sum_{l=0}^{N-k+1} {N-l \choose k-1} = \sum_{l=1}^{N-k+1} {N-l \choose k-1} + {N \choose k-1}.
+\end{equation*}
+
+On utilise maintenant l'hypothèse de récurrence
+\begin{equation*}
+\sum_{l=1}^{N-k+1} {N-l \choose k-1} + {N \choose k-1} = {N \choose k}+ {N \choose k-1}
+\end{equation*}
+
+Finalement, on a
+\begin{equation*}
+{N \choose k}+ {N \choose k-1}= \frac{N!}{k!(N-k)!} + \frac{N!}{k!(N-k+1)!} = \frac{(N+1)!}{k!(N+1-k)!} = {N+1 \choose k}.
+\end{equation*}
+
+Ce qui prouve l'hérédité, clos la récurrence et prouve la proposition.
+
+\section{Seconde preuve :  dénombrement}
+
+On considère un ensemble $E$ composé de $N>0$ élément. Dans cet ensemble, on cherche le nombre d'ensembles de $0<k\leq N$ éléments. Ce nombre est égal à
+
+\begin{equation*}
+{N \choose k}.
+\end{equation*}
+
+On va maintenant compter autrement le nombre d'ensembles $F$ à $k$ éléments. Pour cela on numérote de $1$ à $N$ les éléments de $E$. Pour dénombrer les ensembles de $k$ éléments, on compte ceux dont le premier élément est l'élément $l \in  \llbracket 1;N \rrbracket$.
+
+Pour $l=1$, le premier élément de l'ensemble $F$ est en position $1$. Dans ce cas là, on a 
+
+\begin{equation*}
+{N-1 \choose k-1}
+\end{equation*}
+
+ensembles de $k$ éléments. Pour $l=2$, on a 
+
+\begin{equation*}
+{N-2 \choose k-1}
+\end{equation*}
+
+ensembles $F$ dont le premier élément est le deuxième de $E$. En continuant de dénombrer ainsi, on compte le nombre d'éléments $F$ qui est égal à
+
+\begin{equation*}
+\sum_{l=1}^{N-k+1} {N-l \choose k-1}
+\end{equation*}
+
+Finalement,
+
+\begin{equation*}
+{N \choose k} = \sum_{l=1}^{N-k+1} {N-l \choose k-1}.
+\end{equation*}
 \end{document}
