@@ -4,3 +4,7 @@ Ce dépôt contient quelques développements mathématiques (simples), faits pen
 ## Liste des développements
 
 1. Un exercice de dénombrement
+
+## License
+
+MIT License
