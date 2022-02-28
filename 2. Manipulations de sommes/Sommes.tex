@@ -1,0 +1,73 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[francais]{babel}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\usepackage{stmaryrd}
+
+\begin{document}
+\title{Quelques manipulations de sommes}
+
+\maketitle
+
+\section{Objectif}
+
+Soit $0<k \leq N $ deux entiers positifs.On cherche à réduire la somme
+
+\begin{equation}
+\label{eq:a_reduire}
+\sum_{l=1}^{N-k+1} {N-l \choose k-1}l.
+\end{equation}
+
+Pour calculer cette somme, nous allons utiliser le résultat suivant :
+
+Soit $0<k \leq N $ deux entiers positifs. On a 
+
+\begin{equation}
+\label{eq:resultat_precedent}
+\sum_{l=1}^{N-k+1} {N-l \choose k-1} = {N \choose k}
+\end{equation}
+
+\section{Développements}
+
+On cherche à transformer l'équation \eqref{eq:a_reduire} en sommes d'expressions de sorte à trouver des expressions de la forme de l'équation \eqref{eq:resultat_precedent}.
+
+On écrit
+
+\begin{multline}
+\sum_{l=1}^{N-k+1} {N-l \choose k-1}l = k\sum_{l=1}^{N-k+1} {N-l \choose k-1} \frac{l}{k} \\
++ k\sum_{l=1}^{N-k+1} {N-l \choose k-1} \frac{(N+1)}{k} - k\sum_{l=1}^{N-k+1} {N-l \choose k-1} \frac{(N+1)}{k}. 
+\end{multline}
+
+Les deux termes introduits étant opposés, leur somme est nulle. En utilisant \eqref{eq:resultat_precedent}, on a 
+
+\begin{equation}
+(N+1)\sum_{l=1}^{N-k+1} {N-l \choose k-1} = (N+1){N \choose k}.
+\end{equation}
+
+Ensuite,
+
+\begin{multline}
+k\sum_{l=1}^{N-k+1} {N-l \choose k-1}\left( \frac{l}{k}-\frac{(N+1)}{k} \right) \\
+= -k\sum_{l=1}^{N-k+1} \frac{(N+1-l)}{k}\frac{(N-l)!}{(k-1)!(N+1-l-k)!}\\
+= -k \sum_{l=1}^{N+1-k}{N+1-l \choose k}.
+\end{multline}
+
+Finallement, en utilisant \eqref{eq:resultat_precedent}, on a
+
+\begin{equation}
+-k \sum_{l=1}^{N+1-k}{N+1-l \choose k} = -k {N+1 \choose k+1}.
+\end{equation}
+
+Donc,
+
+\begin{equation}
+\sum_{l=1}^{N-k+1} {N-l \choose k-1}l = (N+1){N \choose k}-k {N+1 \choose k+1}
+\end{equation}
+
+
+\end{document}
